@@ -81,11 +81,11 @@ import {
 class PreknowClient {
   products = {
     all: ({ ...params }: Partial<ProductQueryOptions>) =>
-      HttpClient.get<ProductPaginator>('/store/products', {
+      HttpClient.get<ProductPaginator>(API_ENDPOINTS.PRODUCTS, {
         ...params,
       }),
     popular: (params: Partial<PopularProductQueryOptions>) =>
-      HttpClient.get<Product[]>(`/store/products/popular-products`, params),
+      HttpClient.get<Product[]>(API_ENDPOINTS.PRODUCTS_POPULAR, params),
 
     questions: ({ question, ...params }: QuestionQueryOptions) =>
       HttpClient.get<QuestionPaginator>(API_ENDPOINTS.PRODUCTS_QUESTIONS, {
@@ -96,7 +96,8 @@ class PreknowClient {
         }),
       }),
 
-    get: (id: string) => HttpClient.get<Product>(`/store/products/${id}`),
+    get: (id: string) =>
+      HttpClient.get<Product>(`${API_ENDPOINTS.PRODUCTS}/${id}`),
 
     createFeedback: (input: CreateFeedbackInput) =>
       HttpClient.post<Feedback>(API_ENDPOINTS.FEEDBACK, input),
@@ -148,7 +149,7 @@ class PreknowClient {
   };
   categories = {
     all: ({ ...params }: Partial<CategoryQueryOptions>) =>
-      HttpClient.get<CategoryPaginator>('/categories', {
+      HttpClient.get<CategoryPaginator>(API_ENDPOINTS.CATEGORIES, {
         ...params,
       }),
   };
@@ -219,8 +220,10 @@ class PreknowClient {
         with: 'refund',
         ...params,
       }),
-    get: (orderId: string) => HttpClient.get<Order>(`/orders/${orderId}`),
-    create: (input: CreateOrderInput) => HttpClient.post<any>('/orders', input),
+    get: (orderId: string) =>
+      HttpClient.get<Order>(`${API_ENDPOINTS.ORDERS}/${orderId}`),
+    create: (input: CreateOrderInput) =>
+      HttpClient.post<any>(API_ENDPOINTS.ORDERS, input),
     statuses: (params: Pick<QueryOptions, 'limit'>) =>
       HttpClient.get<OrderStatusPaginator>(API_ENDPOINTS.ORDERS_STATUS, params),
     refunds: (params: Pick<QueryOptions, 'limit'>) =>
@@ -245,13 +248,13 @@ class PreknowClient {
       ),
   };
   users = {
-    me: () => HttpClient.get<User>('/auth/me'),
+    me: () => HttpClient.get<User>(API_ENDPOINTS.USERS_ME),
     update: (user: UpdateUserInput) =>
-      HttpClient.patch<User>(`/users/${user._id}`, user),
+      HttpClient.patch<User>(`${API_ENDPOINTS.USERS}/${user._id}`, user),
     login: (input: LoginUserInput) =>
-      HttpClient.post<AuthResponse>('/auth/login', input),
+      HttpClient.post<AuthResponse>(API_ENDPOINTS.USERS_LOGIN, input),
     socialLogin: (input: SocialLoginInputType) =>
-      HttpClient.post<AuthResponse>('/auth/social-login-token', input),
+      HttpClient.post<AuthResponse>(API_ENDPOINTS.SOCIAL_LOGIN, input),
     sendOtpCode: (input: SendOtpCodeInputType) =>
       HttpClient.post<OTPResponse>(API_ENDPOINTS.SEND_OTP_CODE, input),
     verifyOtpCode: (input: VerifyOtpInputType) =>

@@ -2,14 +2,11 @@ import type {
   CategoryQueryOptions,
   HomePageProps,
   PopularProductQueryOptions,
-  SettingsQueryOptions,
 } from '@/types';
 import type { GetStaticPaths, GetStaticProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { QueryClient } from 'react-query';
 import { dehydrate } from 'react-query/hydration';
-import invariant from 'tiny-invariant';
-import client from './client';
 import { API_ENDPOINTS } from './client/api-endpoints';
 import preknowClient from './client/preknow';
 import { CATEGORIES_PER_PAGE, PRODUCTS_PER_PAGE } from './client/variables';
@@ -41,10 +38,10 @@ export const getStaticProps: GetStaticProps<
   const queryClient = new QueryClient();
 
   // use to prefetch to cache `settings`
-  await queryClient.prefetchQuery(
-    [API_ENDPOINTS.SETTINGS, { language: locale }],
-    ({ queryKey }) => client.settings.all(queryKey[1] as SettingsQueryOptions)
-  );
+  // await queryClient.prefetchQuery(
+  //   [API_ENDPOINTS.SETTINGS, { language: locale }],
+  //   ({ queryKey }) => client.settings.all(queryKey[1] as SettingsQueryOptions)
+  // );
 
   const productVariables = {
     limit: PRODUCTS_PER_PAGE,

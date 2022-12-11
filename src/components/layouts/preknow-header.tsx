@@ -85,7 +85,7 @@ const PreknowHeader = () => {
             <StaticMenu />
             <li className="hidden lg:inline-block xl:hidden">
               <Link
-                href={`${router.asPath}/search`}
+                href={`${router.asPath}search`}
                 className="flex items-center font-normal text-heading no-underline transition duration-200 hover:text-accent focus:text-accent"
               >
                 {t('text-search')}
@@ -95,9 +95,7 @@ const PreknowHeader = () => {
           {/* <CartCounterIconButton /> */}
           <div className="flex items-center space-x-4 rtl:space-x-reverse">
             <a
-              href={`${process.env.NEXT_PUBLIC_ADMIN_URL}/register`}
-              target="_blank"
-              rel="noreferrer"
+              href="/"
               className="inline-flex h-9 shrink-0 items-center justify-center rounded border border-accent px-3 py-0 text-sm font-semibold leading-none text-accent outline-none transition duration-300 ease-in-out hover:bg-accent hover:text-light focus:shadow focus:outline-none focus:ring-1 focus:ring-accent-700"
             >
               {t('text-become-seller')}

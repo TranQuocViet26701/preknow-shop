@@ -5,7 +5,7 @@ import VNpayIcon from '@/assets/preknow/vnpay-icon.svg';
 import ZalopayIcon from '@/assets/preknow/zalopay-icon.svg';
 import HomeLayout from '@/components/layouts/_home';
 import Seo from '@/components/seo/seo';
-import usePrice, { formatPriceVND } from '@/lib/use-price';
+import { formatPriceVND } from '@/lib/use-price';
 import { deliveryMethodAtom, paymentGatewayAtom } from '@/store/checkout';
 import { DeliveryMethodType, PaymentGatewayType } from '@/types/preknow';
 import { useAtom } from 'jotai';

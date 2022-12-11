@@ -16,7 +16,7 @@ export const Routes = {
   products: '/products',
   product: (slug: string) => {
     // if (asPath) {
-    //   return `/products/${encodeURIComponent(slug)}?type=${asPath}`;  
+    //   return `/products/${encodeURIComponent(slug)}?type=${asPath}`;
     // }
     return `/products/${encodeURIComponent(slug)}`;
   },
