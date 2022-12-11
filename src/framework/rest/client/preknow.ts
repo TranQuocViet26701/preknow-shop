@@ -81,14 +81,11 @@ import {
 class PreknowClient {
   products = {
     all: ({ ...params }: Partial<ProductQueryOptions>) =>
-      HttpClient.get<ProductPaginator>('http://localhost:5001/store/products', {
+      HttpClient.get<ProductPaginator>('/store/products', {
         ...params,
       }),
     popular: (params: Partial<PopularProductQueryOptions>) =>
-      HttpClient.get<Product[]>(
-        `http://localhost:5001/store/products/popular-products`,
-        params
-      ),
+      HttpClient.get<Product[]>(`/store/products/popular-products`, params),
 
     questions: ({ question, ...params }: QuestionQueryOptions) =>
       HttpClient.get<QuestionPaginator>(API_ENDPOINTS.PRODUCTS_QUESTIONS, {
@@ -99,8 +96,7 @@ class PreknowClient {
         }),
       }),
 
-    get: (id: string) =>
-      HttpClient.get<Product>(`http://localhost:5001/store/products/${id}`),
+    get: (id: string) => HttpClient.get<Product>(`/store/products/${id}`),
 
     createFeedback: (input: CreateFeedbackInput) =>
       HttpClient.post<Feedback>(API_ENDPOINTS.FEEDBACK, input),
@@ -152,7 +148,7 @@ class PreknowClient {
   };
   categories = {
     all: ({ ...params }: Partial<CategoryQueryOptions>) =>
-      HttpClient.get<CategoryPaginator>('http://localhost:5001/categories', {
+      HttpClient.get<CategoryPaginator>('/categories', {
         ...params,
       }),
   };
@@ -223,10 +219,8 @@ class PreknowClient {
         with: 'refund',
         ...params,
       }),
-    get: (orderId: string) =>
-      HttpClient.get<Order>(`http://localhost:5001/orders/${orderId}`),
-    create: (input: CreateOrderInput) =>
-      HttpClient.post<any>('http://localhost:5001/orders', input),
+    get: (orderId: string) => HttpClient.get<Order>(`/orders/${orderId}`),
+    create: (input: CreateOrderInput) => HttpClient.post<any>('/orders', input),
     statuses: (params: Pick<QueryOptions, 'limit'>) =>
       HttpClient.get<OrderStatusPaginator>(API_ENDPOINTS.ORDERS_STATUS, params),
     refunds: (params: Pick<QueryOptions, 'limit'>) =>
@@ -251,16 +245,13 @@ class PreknowClient {
       ),
   };
   users = {
-    me: () => HttpClient.get<User>('http://localhost:5001/auth/me'),
+    me: () => HttpClient.get<User>('/auth/me'),
     update: (user: UpdateUserInput) =>
-      HttpClient.patch<User>(`http://localhost:5001/users/${user._id}`, user),
+      HttpClient.patch<User>(`/users/${user._id}`, user),
     login: (input: LoginUserInput) =>
-      HttpClient.post<AuthResponse>('http://localhost:5001/auth/login', input),
+      HttpClient.post<AuthResponse>('/auth/login', input),
     socialLogin: (input: SocialLoginInputType) =>
-      HttpClient.post<AuthResponse>(
-        'http://localhost:5001/auth/social-login-token',
-        input
-      ),
+      HttpClient.post<AuthResponse>('/auth/social-login-token', input),
     sendOtpCode: (input: SendOtpCodeInputType) =>
       HttpClient.post<OTPResponse>(API_ENDPOINTS.SEND_OTP_CODE, input),
     verifyOtpCode: (input: VerifyOtpInputType) =>
