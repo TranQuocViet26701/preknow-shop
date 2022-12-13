@@ -7,19 +7,11 @@ import type { InferGetStaticPropsType } from 'next';
 import dynamic from 'next/dynamic';
 
 import HomeLayout from '@/components/layouts/_home';
-import PreknowProductReviews from '@/components/reviews/preknow-product-reviews';
 import { getStaticPaths, getStaticProps } from '@/framework/product.ssr';
 export { getStaticPaths, getStaticProps };
 //FIXME: typescript and layout
 const PreknowDetails = dynamic(
   () => import('@/components/products/details/preknow-details')
-);
-const RelatedProducts = dynamic(
-  () => import('@/components/products/details/related-products')
-);
-const CartCounterButton = dynamic(
-  () => import('@/components/cart/cart-counter-button'),
-  { ssr: false }
 );
 
 const ProductPage: NextPageWithLayout<
@@ -53,7 +45,6 @@ const ProductPage: NextPageWithLayout<
               </div>
             )} */}
         </div>
-        {width > 1023 && <CartCounterButton />}
       </AttributesProvider>
     </>
   );

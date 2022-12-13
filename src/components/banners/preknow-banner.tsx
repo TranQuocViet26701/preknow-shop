@@ -66,14 +66,14 @@ const PreknowBanner: React.FC = () => {
                   <h1 className="!mt-1 text-2xl font-bold tracking-tight text-accent lg:text-4xl xl:text-5xl">
                     better life.
                   </h1>
-                  <p className="max-w-3xl text-left text-sm text-heading lg:text-base xl:text-lg">
-                    The choice of used books is massive - thousands of classic
-                    novels and bestsellers, biographies and memoirs, self-help,
-                    cookbooks, children&apos;s books, affordable textbooks for
-                    school, and out-of-print titles.
+                  <p className="max-w-2xl text-left text-sm text-heading lg:text-base xl:text-lg">
+                    An tâm mua sách đã qua sử dụng cùng PreKnow với vô vàn lựa
+                    chọn - đa dạng các thể loại sách từ tiểu thuyết, hồi ký,
+                    self-help đến sách thiếu nhi, khoa học và sách hiếm. PreKnow
+                    - Nâng tầm sách cũ.
                   </p>
                   <Button className="col-span-2" onClick={handleClick}>
-                    <span className="mr-3">Explore</span> <ArrowNext />
+                    <span className="mr-3">Khám phá</span> <ArrowNext />
                   </Button>
                 </div>
               </div>
