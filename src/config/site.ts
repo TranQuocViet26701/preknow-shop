@@ -168,7 +168,7 @@ export const siteSettings = {
           },
           {
             name: 'Phương thức vận chuyển',
-            href: Routes.help,
+            href: Routes.shipping,
           },
         ],
       },
