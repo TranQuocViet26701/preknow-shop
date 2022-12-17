@@ -97,7 +97,7 @@ export const siteSettings = {
       href: 'https://redq.io/',
     },
     address: 'KTX Khu A - ĐHQG HCM',
-    email: 'admin.preknow@gmail.com',
+    email: 'contact.preknow@gmail.com',
     phone: '(917) 112-245',
     menus: [
       {

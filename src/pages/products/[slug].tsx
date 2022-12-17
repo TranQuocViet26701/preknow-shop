@@ -1,6 +1,5 @@
 import { AttributesProvider } from '@/components/products/details/attributes.context';
 import Seo from '@/components/seo/seo';
-import { useWindowSize } from '@/lib/use-window-size';
 import type { NextPageWithLayout } from '@/types';
 import isEmpty from 'lodash/isEmpty';
 import type { InferGetStaticPropsType } from 'next';
@@ -17,8 +16,6 @@ const PreknowDetails = dynamic(
 const ProductPage: NextPageWithLayout<
   InferGetStaticPropsType<typeof getStaticProps>
 > = ({ product }: any) => {
-  const { width } = useWindowSize();
-
   return (
     <>
       <Seo

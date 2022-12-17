@@ -260,6 +260,7 @@ export function useCreateOrder() {
         setOrderId(data.data._id);
         router.push(data.order_url);
       } else {
+        setOrderId(data.data._id);
         router.push('/checkout/finish');
       }
     },

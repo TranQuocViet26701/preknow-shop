@@ -25,6 +25,8 @@ export default function CheckoutPage() {
     orderId: orderId as string,
   });
 
+  console.log('order: ', order);
+
   return (
     <>
       <Seo noindex={true} nofollow={true} />

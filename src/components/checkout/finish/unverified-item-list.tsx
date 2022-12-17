@@ -2,7 +2,8 @@ import EmptyCartIcon from '@/components/icons/empty-cart';
 import Button from '@/components/ui/button';
 import { Routes } from '@/config/routes';
 import usePrice, { formatPriceVND } from '@/lib/use-price';
-import { orderIdAtom } from '@/store/checkout';
+import { deliveryMethodList } from '@/pages/checkout';
+import { deliveryMethodAtom, orderIdAtom } from '@/store/checkout';
 import { useCart } from '@/store/quick-cart/cart.context';
 import { useAtom } from 'jotai';
 import { useRouter } from 'next/router';
@@ -19,6 +20,18 @@ const UnverifiedItemList = ({ hideTitle = false }: { hideTitle?: boolean }) => {
       amount: total,
     }
   );
+
+  const [deliveryMethod] = useAtom(deliveryMethodAtom);
+
+  const calculateDeliveryPrice = () => {
+    const deliveryItem = deliveryMethodList.find(
+      (item) => item.value === deliveryMethod
+    );
+
+    if (!deliveryItem) return 0;
+
+    return deliveryItem.price;
+  };
 
   const handleContinue = () => {
     router.push(Routes.home);
@@ -48,13 +61,16 @@ const UnverifiedItemList = ({ hideTitle = false }: { hideTitle?: boolean }) => {
         </div>
         <div className="mt-4 space-y-2 border-b border-border-200 py-3">
           <ItemInfoRow title="Tạm tính" value={subtotal} />
-          <ItemInfoRow title="Phí vận chuyển" value="0" />
+          <ItemInfoRow
+            title="Phí vận chuyển"
+            value={formatPriceVND(calculateDeliveryPrice())}
+          />
         </div>
         <div className="flex justify-between py-5 text-base text-body">
           <span>Tổng tiền</span>
           <div className="flex flex-col justify-end">
             <p className="text-right text-2xl text-red-600">
-              {formatPriceVND(total)}
+              {formatPriceVND(total + calculateDeliveryPrice())}
             </p>
             <p className="text-xs">(Đã bao gồm VAT nếu có)</p>
           </div>

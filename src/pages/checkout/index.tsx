@@ -18,7 +18,7 @@ const RightSideView = dynamic(
   { ssr: false }
 );
 
-const deliveryMethodList: any[] = [
+export const deliveryMethodList: any[] = [
   {
     id: 1,
     value: DeliveryMethodType.SAVE,

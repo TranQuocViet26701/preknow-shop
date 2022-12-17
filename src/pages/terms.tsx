@@ -18,7 +18,7 @@ export default function TermsPage() {
           hợp tác với chúng tôi để xây dựng một nền tảng mua bán sách ngày càng
           thân thiện và phục vụ tốt những yêu cầu của chính quý khách. Ngoài ra,
           nếu có bất cứ câu hỏi nào về những thỏa thuận trên đây, vui lòng email
-          cho chúng tôi qua địa chỉ admin.preknow@gmail.com
+          cho chúng tôi qua địa chỉ contact.preknow@gmail.com
         </p>
         <h2 className="my-4 text-base font-semibold text-heading sm:mb-5 sm:text-xl md:text-lg 2xl:mb-7 2xl:text-2xl">
           Tài khoản của khách hàng
@@ -61,7 +61,7 @@ export default function TermsPage() {
           động can thiệp, xâm nhập dữ liệu của PreKnow cũng như hệ thống máy chủ
           của chúng tôi. Ngoài ra, xin vui lòng thông báo cho quản trị web của
           PreKnow ngay khi quý khách phát hiện ra lỗi hệ thống theo số điện
-          thoại (+84) 917112245 hoặc email admin.preknow@gmail.com
+          thoại (+84) 917112245 hoặc email contact.preknow@gmail.com
         </p>
         <p className="my-4 px-0.5 text-sm text-body-dark md:text-base 2xl:text-lg">
           Quý khách không được đưa ra những nhận xét, đánh giá có ý xúc phạm,

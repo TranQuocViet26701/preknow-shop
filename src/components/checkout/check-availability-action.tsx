@@ -1,6 +1,7 @@
 import Button from '@/components/ui/button';
 import { useCreateOrder } from '@/hooks/order';
-import { paymentGatewayAtom } from '@/store/checkout';
+import { deliveryMethodList } from '@/pages/checkout';
+import { deliveryMethodAtom, paymentGatewayAtom } from '@/store/checkout';
 import { useCart } from '@/store/quick-cart/cart.context';
 import classNames from 'classnames';
 import { useAtom } from 'jotai';
@@ -12,6 +13,17 @@ export const CheckAvailabilityAction: React.FC<{
   //   const [billing_address] = useAtom(billingAddressAtom);
   //   const [shipping_address] = useAtom(shippingAddressAtom);
   const [paymentMethod] = useAtom(paymentGatewayAtom);
+  const [deliveryMethod] = useAtom(deliveryMethodAtom);
+
+  const calculateDeliveryPrice = () => {
+    const deliveryItem = deliveryMethodList.find(
+      (item) => item.value === deliveryMethod
+    );
+
+    if (!deliveryItem) return 0;
+
+    return deliveryItem.price;
+  };
 
   const { items, total, isEmpty } = useCart();
 
@@ -35,7 +47,7 @@ export const CheckAvailabilityAction: React.FC<{
     createOrder({
       paymentMethod,
       items: items,
-      amount: total,
+      amount: total + calculateDeliveryPrice(),
     });
   }
 
