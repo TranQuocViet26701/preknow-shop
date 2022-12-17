@@ -109,11 +109,11 @@ export const siteSettings = {
           },
           {
             name: 'Thay đổi địa chỉ',
-            href: '/',
+            href: Routes.profile,
           },
           {
             name: 'Chi tiết tài khoản',
-            href: '/',
+            href: Routes.profile,
           },
           {
             name: 'Lịch sử mua hàng',
@@ -164,7 +164,7 @@ export const siteSettings = {
           },
           {
             name: 'Chính sách đổi trả',
-            href: Routes.help,
+            href: Routes.refunds,
           },
           {
             name: 'Phương thức vận chuyển',

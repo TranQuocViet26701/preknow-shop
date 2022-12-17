@@ -8,7 +8,7 @@ export const Routes = {
   orders: '/orders',
   order: (tracking_number: string) =>
     `/orders/${encodeURIComponent(tracking_number)}`,
-  refunds: '/refunds',
+  refunds: '/return-policy',
   help: '/help',
   logout: '/logout',
   coupons: '/offers',
